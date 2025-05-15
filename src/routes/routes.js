@@ -1,5 +1,4 @@
 import express from "express";
-import games from "../../data/games.json" assert { type: "json" };
 import { getGames } from "../utils/games.js";
 
 export const router = express.Router();
