@@ -4,21 +4,12 @@ import cors from "cors";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const allowedOrigins = ["http://localhost:5173", "https://shiba-games.vercel.app/"];
+app.use(cors({
+  origin: ['http://localhost:4173', 'http://localhost:5173', 'https://shiba-games.vercel.app/'], // Reemplaza con tus dominios
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("No permitido por CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-app.use(cors(corsOptions));
 app.use(express.json())
 
 app.get('/', (req, res) => {
