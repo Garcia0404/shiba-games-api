@@ -5,7 +5,7 @@ import cors from "cors";
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:4173', 'http://localhost:5173', 'https://shiba-games.vercel.app/'], // Reemplaza con tus dominios
+  origin: ['http://localhost:4173', 'http://localhost:5173', 'https://shiba-games.vercel.app'], // Reemplaza con tus dominios
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
