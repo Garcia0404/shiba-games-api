@@ -7,7 +7,7 @@ import rateLimit from "express-rate-limit";
 // Limitar solicitudes
 const voteLimiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, // 1 día
-  max: 2,
+  max: 30,
   message: "Demasiadas solicitudes, intenta más tarde.",
 });
 const PORT = process.env.PORT || 3000;
