@@ -35,6 +35,10 @@ app.post('/api/vote', voteLimiter, validateGameExists, validateVote, async (req,
       sql: 'INSERT INTO votes(ip,game_uuid) VALUES(?,?)',
       args: [ip, uuid],
     });
+    await db.execute({
+      sql: 'UPDATE games SET popularity = popularity + 1 WHERE uuid=?',
+      args: [uuid]
+    })
     res.status(200).send('¡Gracias por tu voto!');
   } catch (error) {
     console.error(error);
